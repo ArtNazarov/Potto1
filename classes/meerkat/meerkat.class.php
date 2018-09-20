@@ -27,7 +27,10 @@ if (($params['db']!=null) && (is_object($params['db'])))
          $this->components['view'] = $this->components['factory']->createInstance("Lorius", $params);
          $this->components['log'] = $this->components['factory']->createInstance("Duck", $params);
          $this->components['formitems'] = $this->components['factory']->createInstance("FormItems", $params);
+         /* не используем капчу 
 		 $this->components['captcha'] = $this->components['factory']->createInstance("Berkut", $params);
+          * 
+          */
 		 $this->components['var_cache'] = $this->components['factory']->createInstance("Forest", $params);
 		 $this->components['var_cache']->lifetime = 600;
         }
@@ -411,7 +414,11 @@ function AdminLoginFailMsg() // Сообщение в админке о неуд
          $this->components['view']->SetVar('ACTION', 'login');
          $this->components['view']->SetVar('ACTION2', 'regform');
          $this->components['view']->SetVar('TLINK2', 'Зарегистрироваться');
+         /* временно выключим капчу 
 		 $this->components['view']->SetVar('CAPTCHA', $this->components['captcha']->FormCaptcha());
+          * 
+          */
+         $this->components['view']->SetVar('CAPTCHA', '');
          $this->components['view']->CreateView();
          $this->components['view']->Publish();
         }
@@ -425,7 +432,11 @@ function AdminLoginFailMsg() // Сообщение в админке о неуд
          $this->components['view']->SetVar('ACTION', 'register');
          $this->components['view']->SetVar('ACTION2', 'logform');
          $this->components['view']->SetVar('TLINK2', 'Войти');
-		 $this->components['view']->SetVar('CAPTCHA', $this->components['captcha']->FormCaptcha());
+         /* временно выключим капчу 
+		 , $this->components['captcha']->FormCaptcha());
+          * 
+          */
+         $this->components['view']->SetVar('CAPTCHA', '');
          $this->components['view']->CreateView();
          $this->components['view']->Publish();
         }
@@ -471,7 +482,8 @@ function AdminLogin() // Процедура входа в админку
 $this->AdminAuthorization();
 $ok_key = $this->CheckKey();
 $ok_role = $this->AdminRole($this->GetKeyFromSession());
-if (($ok_key==false) or ($ok_role==false) or ($this->components['captcha']->check()==false) )
+// or ($this->components['captcha']->check()==false)
+if (($ok_key==false) or ($ok_role==false) )
  {$this->AdminLoginFailMsg();
 
   } else { $this->AdminLoginOkMsg(); };
