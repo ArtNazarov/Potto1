@@ -702,7 +702,8 @@ if ($c > $cols) {$t .= "</tr>"; $c = 1;};
 	
 	function comments()
 	{
-	if ($this->components['captcha']->check())
+            // выключим капчу $this->components['captcha']->check()
+	if (true)
 	{
 	$this->components['comments']->AddComment($_POST['page']);
 	$this->components['comments']->com_posted($_POST['page']);

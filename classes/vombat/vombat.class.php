@@ -34,7 +34,10 @@ if (($params['db']!=null) && (is_object($params['db'])))
 	$this->components['db']->Plug();
 	$this->components['view'] = $this->components['factory']->createInstance("Lorius", $params); // Подключаем шаблонизатор
 	$this->components['options'] = $this->components['factory']->createInstance("WiseMonkey", $params); // Подключаем общие настройки сайта
+    /* временно выключим капчу    
     $this->components['captcha'] = $this->components['factory']->createInstance("Berkut", $params); // Подключаем капчу
+     * */
+     
 }
 function __destruct()
 {
@@ -135,7 +138,11 @@ function GetComments($aId_page)
   $this->components['view']->SetVar('USERNAME', $aUsername);
   $this->components['view']->SetVar('ID', $aID);
   $this->components['view']->SetVar('CREATED', date("Y-m-d H:i:s"));
+  /* временно выключим капчу 
   $this->components['view']->SetVar('CAPTCHA', $this->components['captcha']->FormCaptcha());
+   * 
+   */
+  $this->components['view']->SetVar('CAPTCHA', '');
   $this->components['view']->CreateView();
   return $this->components['view']->GetView();
  }
