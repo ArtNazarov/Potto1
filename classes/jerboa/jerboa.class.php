@@ -525,7 +525,7 @@ if ($c > $cols) {$t .= "</tr>"; $c = 1;};
 	{
         $human= $this->system['username'];
 	$role = $this->system['usergroup'];
-	if ($role == "seller")	
+	if ($role != 'guest')	
 	{
 	
     if ($_POST['refresh']=="OK")

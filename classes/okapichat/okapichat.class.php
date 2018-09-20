@@ -1,5 +1,5 @@
 <?php
-if (!defined('APP')) {die('ERROR');};
+//if (!defined('APP')) {die('ERROR');};
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/masterfactory/masterfactory.class.php';
 
 class OkapiChat
@@ -10,6 +10,9 @@ class OkapiChat
   var $mod_path = '/classes/okapichat/';
   function __construct($params)
   {
+        if (!file_exists($_SERVER['DOCUMENT_ROOT'].'/chat.log')){
+            file_put_contents($_SERVER['DOCUMENT_ROOT'].'/chat.log', '');
+        }
   	  $this->components = null;
 	  $this->components['factory'] = new MasterFactory($params);
 	  $this->components['view'] = $this->components['factory']->createInstance("Lorius", $params);
@@ -27,6 +30,7 @@ class OkapiChat
   }
   function getChatLog()
   {
+         
 	  return $_SERVER['DOCUMENT_ROOT']."/chat.log";
   }
 
@@ -55,6 +59,8 @@ class OkapiChat
 	  }
   function loadmessages()
   {
+    
+      
 	  $fh = @fopen($this->getChatLog(), "r+");
       $fcontent = @fread($fh, filesize($this->getChatLog()));
  	  fclose($fh);
