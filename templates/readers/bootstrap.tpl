@@ -77,7 +77,7 @@
 
 	
     
-    <script src="/plugins/js/jquery.js"></script>    
+    <script src="/plugins/jquery/jquery.js"></script>    
     <script src="/plugins/bootstrap/assets/bootstrap-transition.js"></script>
     <script src="/plugins/bootstrap/assets/bootstrap-alert.js"></script>
     <script src="/plugins/bootstrap/assets/bootstrap-modal.js"></script>
@@ -85,7 +85,7 @@
     <script src="/plugins/bootstrap/assets/bootstrap-scrollspy.js"></script>
     <script src="/plugins/bootstrap/assets/bootstrap-tab.js"></script>
     <script src="/plugins/bootstrap/assets/bootstrap-tooltip.js"></script>
-    <script src="j/plugins/bootstrap/assets/bootstrap-popover.js"></script>
+    <script src="/plugins/bootstrap/assets/bootstrap-popover.js"></script>
     <script src="/plugins/bootstrap/assets/bootstrap-button.js"></script>
     <script src="/plugins/bootstrap/assets/bootstrap-collapse.js"></script>
     <script src="/plugins/bootstrap/assets/bootstrap-carousel.js"></script>

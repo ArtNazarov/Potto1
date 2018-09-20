@@ -539,6 +539,9 @@ else
 		 // Узнаем информацию о товаре из базы	 
 		 $this->components['db']->setTable('trade_sklad');
 	$artikul = $_SESSION['cart']["item".$i]['artikul'];
+  
+  
+  
 	$this->components['db']->Select('*', "artikul='$artikul'");
 
 	$data = $this->components['db']->Read();
